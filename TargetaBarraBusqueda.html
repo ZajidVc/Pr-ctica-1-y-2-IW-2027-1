@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Mosaico</title>
+    <link rel="stylesheet" href="stylesBus.css">
+</head>
+<body>
+
+   
+    <header class="barra-superior">
+        <h1 class="TituloGame">Gamer<span>Shop</span></h1>
+        <span class="icono-buscar"></span>
+        <input type="text" id="inputBusqueda" placeholder="Buscar producto gamer...">
+        <div class="carrito-header">
+        🛒 <span id="contadorCarrito">0</span>
+    </div>
+        <label class="switch-modo" for="selector-modo">
+            <input type="checkbox" id="selector-modo">
+            <span class="deslizador"></span>
+            <span class="etiqueta-modo">Modo Oscuro</span>
+        </label>
+    </header>
+
+    
+    <main class="catalogo-grid">
+
+       
+        <article class="tarjeta" tabindex="0" data-nombre="Audífonos inalámbricos">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ16TLMxXAa9o0H4QvyWEKeDShsFWy1MryBVt4tv25H7g&s=10" alt="Audífonos inalámbricos" class="imagen-producto">
+           </div>
+            <div class="info-producto">
+                <p class="nombre">Audífonos inalámbricos</p>
+                <p class="precio">$500.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Teclado gamer">
+             <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQMVuUmuFkhbef-M_xSEn6AZoh4oG5W8tl8XkhcPTEHA&s=10" alt="Teclado gamer" class="imagen-producto">
+           </div>
+            <div class="info-producto">
+                <p class="nombre">Teclado gamer</p>
+                <p class="precio">$500.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Laptop gamer">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS21uvhLwmhuhBMln0p0wZgCHYn7KkLkgVHHqY5BvTePQ&s=10" alt="Laptop gamer" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Laptop gamer</p>
+                <p class="precio">$5800.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 4 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Monitor">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5r43saIDgBxUo3C4g6IER9M70bPGHiaiBHLZPcIXJ0g&s=10" alt="Monitor" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Monitor</p>
+                <p class="precio">$1300.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 5 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Control gamer">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk7tf1jkJvmjCxYzexhoDlN2pIazUtwoAgh5PjJsmnDg&s=10" alt="Control gamer" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Control gamer</p>
+                <p class="precio">$800.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 6 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Mouse gamer">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG9rN8NExEyopgEGiqpMPwXscS_74MVGmzt3MP7Up4zA&s=10" alt="Mouse gamer" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Mouse gamer</p>
+                <p class="precio">$300.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 7 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Pc gamer">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD0AilhX5Ft574cSaGKIeT2ctzL7Pz-kafyg65fQM_VA&s=10" alt="Pc gamer" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Pc gamer</p>
+                <p class="precio">$9800.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 8 -->
+        <article class="tarjeta" tabindex="0" data-nombre="RAMS">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbZ4oXRsO7fiTp5qYVYVvgVf3vkn_2Y8NJ94946IhOVA&s=10" alt="RAMS" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">RAMS</p>
+                <p class="precio">$300.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 9 -->
+        <article class="tarjeta" tabindex="0" data-nombre="Disco Duro">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqLTKvl7KjVzvYucupBQEWrSPWH4qN6Qb_q_--HHNPaQ&s" alt="Disco Duro" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Disco Duro</p>
+                <p class="precio">$2300.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+        <!-- Tarjeta 10-->
+        <article class="tarjeta" tabindex="0" data-nombre="Grafica">
+            <div class="contenedor-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVXQnAmEogKIq3j1mkxqPd7kDFEc510rd_5BN6omLn7w&s=10" alt="Grafica" class="imagen-producto">
+            </div>
+            <div class="info-producto">
+                <p class="nombre">Grafica</p>
+                <p class="precio">$300.00</p>
+                <button type="button" class="btn-carrito">🛒 Agregar al carrito</button>
+            </div>
+        </article>
+
+    </main>
+    
+    <div id="noEncontrado" class="mensaje-vacio">
+        <p>👾 No se encontraron productos con ese nombre.</p>
+    </div>
+
+    <!-- Script de búsqueda -->
+    <script>
+        const inputBusqueda = document.getElementById('inputBusqueda');
+        const tarjetas = document.querySelectorAll('.tarjeta'); // Ajustado a tu clase .tarjeta
+        const mensajeNoEncontrado = document.getElementById('noEncontrado');
+
+        inputBusqueda.addEventListener('input', (e) => {
+            const textoBusqueda = e.target.value.toLowerCase().trim();
+            let matches = 0;
+
+            tarjetas.forEach(tarjeta => {
+                const nombre = tarjeta.getAttribute('data-nombre').toLowerCase();
+                
+                if (nombre.includes(textoBusqueda)) {
+                    tarjeta.style.display = 'flex';
+                    matches++;
+                } else {
+                    tarjeta.style.display = 'none';
+                }
+            });
+
+            // mensaje no encontrado
+            if (matches === 0) {
+                mensajeNoEncontrado.style.display = 'block';
+            } else {
+                mensajeNoEncontrado.style.display = 'none';
+            }
+        });
+
+       // --- Carrito con LocalStorage y Contador ---
+        const botonesCarrito = document.querySelectorAll('.btn-carrito');
+        const contadorCarrito = document.getElementById('contadorCarrito');
+
+        // 1. Obtener productos guardados en localStorage (o iniciar lista vacía)
+        let carrito = JSON.parse(localStorage.getItem('carritoGamer')) || [];
+
+        function actualizarContador() {
+            contadorCarrito.textContent = carrito.length;
+        }
+
+        botonesCarrito.forEach(boton => {
+            const tarjeta = boton.closest('.tarjeta');
+            // Toma el nombre desde data-nombre o desde el texto de la tarjeta
+            const nombreProducto = tarjeta.getAttribute('data-nombre') || tarjeta.querySelector('.nombre').textContent;
+
+            // 2. Si el producto ya estaba guardado, marcarlo al cargar la página
+            if (carrito.includes(nombreProducto)) {
+                tarjeta.classList.add('en-carrito');
+                boton.textContent = '✔ En el carrito';
+            }
+
+            // 3. Al hacer clic, agregar o quitar de localStorage y actualizar contador
+            boton.addEventListener('click', () => {
+                tarjeta.classList.toggle('en-carrito');
+
+                if (tarjeta.classList.contains('en-carrito')) {
+                    boton.textContent = '✔ En el carrito';
+                    if (!carrito.includes(nombreProducto)) {
+                        carrito.push(nombreProducto);
+                    }
+                } else {
+                    boton.textContent = '🛒 Agregar al carrito';
+                    carrito = carrito.filter(item => item !== nombreProducto);
+                }
+
+                localStorage.setItem('carritoGamer', JSON.stringify(carrito));
+                actualizarContador();
+            });
+        });
+
+        // Mostrar la cantidad guardada al abrir la página
+        actualizarContador();
+    </script>
+
+</body>
+</html>

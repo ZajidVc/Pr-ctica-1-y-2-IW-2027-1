@@ -1,0 +1,424 @@
+
+:root {
+   
+    --color-fondo: #ffffff;
+    --color-tarjeta-fondo: #f6ecdc;
+    --color-sombra-verde: #9fc19e;
+    --color-borde-inicial: transparent;
+    --color-borde-seleccion: #16a34a;       /* Borde verde  */
+    --color-texto: #1c1917;
+    --color-placeholder-fondo: #c7cbd1;
+    --color-placeholder-lineas: #79818d;
+    --fuente-texto: "Times New Roman", Times, Georgia, serif;
+    --transicion-suave: all 0.3s ease;
+}
+
+
+body:has(#selector-modo:checked) {
+    --color-fondo: #0f172a;
+    --color-tarjeta-fondo: #1e293b;
+    --color-sombra-verde: #065f46;
+    --color-borde-inicial: transparent;
+    --color-borde-seleccion: #38bdf8;       /* Borde celeste  */
+    --color-texto: #f8fafc;
+    --color-placeholder-fondo: #334155;
+    --color-placeholder-lineas: #94a3b8;
+}
+
+/* Reset y estructura base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Estilo principal del título */
+.TituloGame {
+    
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-texto);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    text-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+
+/* Color de acento para la palabra "Shop" */
+.TituloGame span {
+    color: var(--color-borde-seleccion);
+}
+
+body:has(#selector-modo:checked) .TituloGame {
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+}
+
+body:has(#selector-modo:checked) .TituloGame span {
+    text-shadow: 0 0 18px rgba(56, 189, 248, 0.85);
+}
+
+.tTituloGame:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    min-height: 100vh;
+    padding: 2rem;
+    transition: var(--transicion-suave);
+}
+
+.barra-superior {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch-modo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    user-select: none;
+    background-color: var(--color-tarjeta-fondo);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 2px solid var(--color-borde-seleccion);
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+.switch-modo:hover {
+    transform: translateY(-2px);
+}
+
+.switch-modo input {
+    display: none;
+}
+
+.deslizador {
+    position: relative;
+    width: 52px;
+    height: 26px;
+    background-color: #cbd5e1;
+    border-radius: 30px;
+    transition: var(--transicion-suave);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.deslizador::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+}
+.switch-modo input:checked + .deslizador {
+    background-color: #0f1628;
+    box-shadow: inset 0 0 6px #38bdf8;
+}
+
+.switch-modo input:checked + .deslizador::before {
+    content: "";
+    background-color: #1e293b;
+    transform: translateX(26px) rotate(360deg);
+    box-shadow: 0 0 8px #38bdf8;
+}
+
+body:has(#selector-modo:checked) .switch-modo {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  
+    gap: 2.2rem 1.8rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-tarjeta-fondo);
+    border-radius: 18px;
+    padding: 1.25rem 1rem 1rem 1rem;
+    
+
+    box-shadow: 4px 4px 0px 1px var(--color-sombra-verde);
+    
+    /* Borde base */
+    border: 2px solid var(--color-borde-inicial);
+    outline: none;
+    cursor: pointer;
+
+  
+    transition: var(--transicion-suave);
+
+     
+}
+
+.tarjeta:hover,
+.tarjeta:focus {
+    border-color: var(--color-borde-seleccion);
+    transform: translateY(-5px);
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Elementos internos de la tarjeta */
+.contenedor-img {
+    width: 140px;
+    height: 140px;
+    background-color: #ffffff; /* Fondo blanco para que combine limpio con fotos de productos */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    padding: 8px; /* Espacio interno para que la imagen no toque los bordes */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease; 
+}
+
+/* Zoom suave en la foto al seleccionar la tarjeta */
+.tarjeta:hover .imagen-producto,
+.tarjeta:focus .imagen-producto {
+    transform: scale(1.1);
+}
+
+.icono-placeholder {
+    width: 110px;
+    height: 110px;
+    color: var(--color-placeholder-lineas);
+}
+
+.info-producto {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+}
+.info-producto .nombre {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--color-texto);
+    transition: var(--transicion-suave);
+}
+
+.info-producto .precio {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--color-borde-seleccion);
+    background-color: var(--color-fondo);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    border: 1.5px solid var(--color-borde-seleccion);
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+
+.tarjeta:hover .precio,
+.tarjeta:focus .precio {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+    transform: scale(1.06);
+}
+body:has(#selector-modo:checked) .info-producto .precio {
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+body:has(#selector-modo:checked) .tarjeta:hover .precio,
+body:has(#selector-modo:checked) .tarjeta:focus .precio {
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.75);
+}
+
+/* Permite que la barra superior se acomode bien en pantallas pequeñas */
+.barra-superior {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+/* Contenedor de la barra de búsqueda */
+.contenedor-busqueda {
+    position: relative;
+    flex: 1;
+    max-width: 360px;
+    min-width: 240px;
+    display: flex;
+    align-items: center;
+    order: 3;           /* Agrega esta línea: manda el buscador después del switch */
+    margin-right: 50%;  /* Agrega esta línea: fuerza al buscador a bajar a la segunda fila */
+}
+
+.icono-buscar {
+    position: absolute;
+    left: 14px;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+/* Botón de Agregar al carrito */
+.btn-carrito {
+    margin-top: 0.3rem;
+    padding: 0.45rem 0.85rem;
+    width: 100%;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    background-color: transparent;
+    border: 2px solid var(--color-borde-seleccion);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transicion-suave);
+}
+.carrito-header {
+    margin-left: auto; /* Lo acomoda a la derecha junto al switch */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    background-color: var(--color-tarjeta-fondo);
+    padding: 0.45rem 0.9rem;
+    border-radius: 50px;
+    border: 2px solid var(--color-borde-seleccion);
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+
+.btn-carrito:hover {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+}
+
+/* Estado activo cuando el producto se agrega al carrito */
+.tarjeta.en-carrito {
+    border-color: var(--color-borde-seleccion);
+    box-shadow: 0 0 14px rgba(22, 163, 74, 0.4);
+}
+
+.tarjeta.en-carrito .btn-carrito {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+}
+
+/* Brillo neón para los productos seleccionados en Modo Oscuro */
+body:has(#selector-modo:checked) .tarjeta.en-carrito {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+#contadorCarrito {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+    padding: 0.1rem 0.55rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    transition: var(--transicion-suave);
+}
+body:has(#selector-modo:checked) .carrito-header {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+#inputBusqueda {
+    order: 3;
+    flex: 1;
+    min-width: 200px; /* Evita que se haga muy pequeño */
+    padding: 0.65rem 1rem 0.65rem 2.6rem;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta-fondo);
+    border: 2px solid var(--color-borde-seleccion);
+    border-radius: 50px;
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    outline: none;
+    transition: var(--transicion-suave);
+}
+
+#inputBusqueda::placeholder {
+    color: var(--color-placeholder-lineas);
+}
+
+/* Efecto al escribir en el buscador */
+#inputBusqueda:focus {
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Brillo neón para el buscador en Modo Oscuro */
+body:has(#selector-modo:checked) #inputBusqueda {
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+body:has(#selector-modo:checked) #inputBusqueda:focus {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+
+/* Mensaje de "No encontrado" (oculto por defecto) */
+.mensaje-vacio {
+    display: none;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta-fondo);
+    border: 2px dashed var(--color-borde-seleccion);
+    border-radius: 18px;
+    box-shadow: 4px 4px 0px var(--color-sombra-verde);
+}
+
+/* Adaptación responsive */
+@media (max-width: 900px) {
+    .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .catalogo-grid {
+        grid-template-columns: 1fr;
+    }
+}
