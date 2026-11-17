@@ -1,4 +1,4 @@
-import { Cart } from './Cart.js';
+import { Cart } from './Models/Cart.js';
 import { filtrarProductosPorNombre } from './funciones.js';
 
 // Instanciamos nuestro carrito
