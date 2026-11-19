@@ -1,5 +1,5 @@
-import { Cart } from './Cart.js';
-import{filtrarProductosPorNombre} from './funciones.js';
+import { Cart } from './Models/Cart.js';
+import{filtrarProductosPorNombre} from './Services/funciones.js';
 
 // Instanciamos nuestro carrito
 const myCart = new Cart();
