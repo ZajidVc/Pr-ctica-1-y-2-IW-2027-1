@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - Mosaico</title>
+    <link rel="stylesheet" href="stylesBus.css">
+    <script> 
+    /* Declaración y ejecución de la función de forma automática */
+        (function() 
+        {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+<header class="barra-superior">
+    <div class="filaSuperior">
+        <h1 class="TituloGame">Gamer<span>Shop</span></h1>
 
+    <label class="switch-modo" for="selector-modo">
+        <input type="checkbox" id="selector-modo">
+        <span class="deslizador"></span>
+        <span class="etiqueta-modo">Modo Oscuro</span>
+    </label>
+</div>
+<div class="filaInferior">
+    <div class="contenedor-busqueda">
+        <span class="icono-buscar"></span>
+        <input type="text" id="inputBusqueda" placeholder="Buscar Producto Gamer ..."> 
+        </div>
+    <button id="abrirCarritoBtn" class="nav-btn-cart carrito-header" aria-label="Ver Carrito">
+            🛒<span id="cart-badge" class="badge-top-right">0</span>  
+    </button>
+    </div>        
+</div>
+</header>
+    <main id="catalogoContainer" class="catalogo-grid"></main>
+    <div id="noEncontrado" class="mensaje-vacio">
+        <p>👾 No se encontraron productos con ese nombre.</p>
+    </div>
+    <!-- Sección de formulario para finalizar compra -->
+    <section id="seccionCheckout" class="seccion-checkout" style="display: none;">
+        <div class="encabezado-checkout">
+            <h2>📦 Finalizar Compra</h2>
+            <button type="button" id="volverDesdeCheckout" class="btn-volver-catalogo">⬅ Volver al catálogo</button>
+        </div>
+
+        <div class="resumen-checkout">
+            <h3>Resumen de tu pedido</h3>
+            <div id="listaResumenCheckout" class="lista-resumen"></div>
+            <p class="total-checkout">Total a pagar: <strong id="totalCheckout">$0.00</strong></p>
+        </div>
+
+        <form id="formCheckout" class="form-checkout">
+            <h3>Datos personales y de envío</h3>
+
+            <div class="grupo-campo">
+                <label for="checkoutNombre">Nombre completo</label>
+                <input type="text" id="checkoutNombre" placeholder="Ej. Leonardo Martínez" required>
+            </div>
+
+            <div class="fila-campos">
+                <div class="grupo-campo">
+                    <label for="checkoutEmail">Correo electrónico</label>
+                    <input type="email" id="checkoutEmail" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="grupo-campo">
+                    <label for="checkoutTelefono">Teléfono</label>
+                    <input type="tel" id="checkoutTelefono" placeholder="55 1234 5678" required>
+                </div>
+            </div>
+
+            <div class="grupo-campo">
+                <label for="checkoutDireccion">Dirección de envío</label>
+                <input type="text" id="checkoutDireccion" placeholder="Calle, número, colonia y código postal" required>
+            </div>
+
+            <div class="grupo-campo">
+                <label for="checkoutPago">Método de pago</label>
+                <select id="checkoutPago" required>
+                    <option value="">Selecciona una opción...</option>
+                    <option value="tarjeta">Tarjeta de crédito / débito</option>
+                    <option value="transferencia">Transferencia bancaria</option>
+                    <option value="efectivo">Pago contra entrega</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-confirmar-compra">✔ Confirmar pedido</button>
+        </form>
+
+        <!-- Mensaje de confirmación al enviar el formulario -->
+        <div id="mensajeCompraExitosa" class="compra-exitosa" style="display: none;">
+            <h3>🎉 ¡Pedido confirmado!</h3>
+            <p id="detalleCompraExitosa"></p>
+            <button type="button" id="seguirComprandoBtn" class="btn-confirmar-compra">Seguir comprando</button>
+        </div>
+    </section>
+
+<div id="modalCarrito" class="modal-carrito" style="display: none;">
+    <div class="contenido-modal">
+        <div class="encabezado-modal">
+            <h2>🛒 Tu Carrito</h2>
+            <button id="cerrarCarrito" class="btn-cerrar">&times;</button>
+        </div>
+        <div id="itemsenCarrito" class="items-carrito"></div>
+       <div class="pie-modal">
+            <p>Total: <strong id="totalCarrito">$0.00</strong></p>
+            <p id="alertaCarrito" class="alerta-carrito"></p>
+            <div class="acciones-modal">
+                <button type="button" id="volverCatalogo" class="btn-volver">⬅ Volver al catálogo</button>
+                <button type="button" id="vaciarCarrito" class="btn-vaciar">Vaciar Carrito</button>
+            </div>
+            <button type="button" id="finalizarCompraBtn" class="btn-finalizar">💳 Finalizar compra</button>
+        </div>
+    </div>
+</div>
+    <script type="module" src="App.js"></script>
+</body>
+</html>
