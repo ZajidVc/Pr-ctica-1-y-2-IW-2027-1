@@ -1,4 +1,4 @@
-import { StorageService } from './StorageService.js';  /*Este formato es necesario para indicar la ruta donde se encuentra el objetivo*/
+import { StorageService } from './Services/StorageService.js';  /*Este formato es necesario para indicar la ruta donde se encuentra el objetivo*/
 const STORAGE_KEY = 'SHOPPING_CART'; /*COnstante para referirnos al carrito*/
 export class Cart {
   constructor() {
