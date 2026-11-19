@@ -1,0 +1,532 @@
+
+:root {
+   
+    --color-fondo: #ffffff;
+    --color-tarjeta-fondo: #f6ecdc;
+    --color-sombra-verde: #9fc19e;
+    --color-borde-inicial: transparent;
+    --color-borde-seleccion: #16a34a;       /* Borde verde  */
+    --color-texto: #1c1917;
+    --color-placeholder-fondo: #c7cbd1;
+    --color-placeholder-lineas: #79818d;
+    --fuente-texto: "Times New Roman", Times, Georgia, serif;
+    --transicion-suave: all 0.3s ease;
+}
+body:has(#selector-modo:checked) {
+    --color-fondo: #0f172a;
+    --color-tarjeta-fondo: #1e293b;
+    --color-sombra-verde: #065f46;
+    --color-borde-inicial: transparent;
+    --color-borde-seleccion: #38bdf8;       /* Borde celeste  */
+    --color-texto: #f8fafc;
+    --color-placeholder-fondo: #334155;
+    --color-placeholder-lineas: #94a3b8;
+}
+/* Reset y estructura base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Estilo principal del título */
+.TituloGame {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-texto);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    text-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+
+/* Color de acento para la palabra "Shop" */
+.TituloGame span {
+    color: var(--color-borde-seleccion);
+}
+
+body:has(#selector-modo:checked) .TituloGame {
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+}
+
+body:has(#selector-modo:checked) .TituloGame span {
+    text-shadow: 0 0 18px rgba(56, 189, 248, 0.85);
+}
+
+.tTituloGame:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    min-height: 100vh;
+    padding: 2rem;  
+    transition: var(--transicion-suave);
+}
+
+.barra-superior {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.filaSuperior{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.filaInferior{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+}
+.switch-modo {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    user-select: none;
+    background-color: var(--color-tarjeta-fondo);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 2px solid var(--color-borde-seleccion);
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+.switch-modo:hover {
+    transform: translateY(-2px);
+}
+.ContenedorBotones{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex;
+}
+.switch-modo input {
+    display: none;
+}
+
+.deslizador {
+    position: relative;
+    width: 52px;
+    height: 26px;
+    background-color: #cbd5e1;
+    border-radius: 30px;
+    transition: var(--transicion-suave);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.deslizador::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+}
+.switch-modo input:checked + .deslizador {
+    background-color: #0f1628;
+    box-shadow: inset 0 0 6px #38bdf8;
+}
+
+.switch-modo input:checked + .deslizador::before {
+    content: "";
+    background-color: #1e293b;
+    transform: translateX(26px) rotate(360deg);
+    box-shadow: 0 0 8px #38bdf8;
+}
+
+body:has(#selector-modo:checked) .switch-modo {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  
+    gap: 2.2rem 1.8rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-tarjeta-fondo);
+    border-radius: 18px;
+    padding: 1.25rem 1rem 1rem 1rem;
+    box-shadow: 4px 4px 0px 1px var(--color-sombra-verde);
+    /* Borde base */
+    border: 2px solid var(--color-borde-inicial);
+    outline: none;
+    cursor: pointer;
+    transition: var(--transicion-suave);
+}
+.tarjeta:hover,
+.tarjeta:focus {
+    border-color: var(--color-borde-seleccion);
+    transform: translateY(-5px);
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.15);
+}
+/* Elementos internos de la tarjeta */
+.contenedor-img {
+    width: 140px;
+    height: 140px;
+    background-color: #ffffff; /* Fondo blanco para que combine limpio con fotos de productos */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    padding: 8px; /* Espacio interno para que la imagen no toque los bordes */
+}
+.imagen-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease; 
+}
+/* Zoom suave en la foto al seleccionar la tarjeta */
+.tarjeta:hover .imagen-producto,
+.tarjeta:focus .imagen-producto {
+    transform: scale(1.1);
+}
+.icono-placeholder {
+    width: 110px;
+    height: 110px;
+    color: var(--color-placeholder-lineas);
+}
+
+.info-producto {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+}
+.info-producto .nombre {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--color-texto);
+    transition: var(--transicion-suave);
+}
+
+.info-producto .precio {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--color-borde-seleccion);
+    background-color: var(--color-fondo);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    border: 1.5px solid var(--color-borde-seleccion);
+    letter-spacing: 1px;
+    box-shadow: 2px 2px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+}
+
+.tarjeta:hover .precio,
+.tarjeta:focus .precio {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+    transform: scale(1.06);
+}
+body:has(#selector-modo:checked) .info-producto .precio {
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+body:has(#selector-modo:checked) .tarjeta:hover .precio,
+body:has(#selector-modo:checked) .tarjeta:focus .precio {
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.75);
+}
+
+/* Permite que la barra superior se acomode bien en pantallas pequeñas */
+.barra-superior {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+/* Contenedor de la barra de búsqueda */
+.contenedor-busqueda {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    max-width: none;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+}
+
+.icono-buscar {
+    position: absolute;
+    left: 14px;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+/* Botón de Agregar al carrito */
+.btn-carrito {
+    margin-top: 0.3rem;
+    padding: 0.45rem 0.85rem;
+    width: 100%;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    background-color: transparent;
+    border: 2px solid var(--color-borde-seleccion);
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.carrito-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    flex: 0 0 auto !important;
+    max-width: fit-content;
+    background-color: var(--color-tarjeta-fondo);
+    padding: 0.45rem 0.9rem;
+    border-radius: 50px;
+    border: 2px solid var(--color-borde-seleccion);
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    transition: var(--transicion-suave);
+    width: auto !important;
+}
+
+.btn-carrito:hover {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.badge-top-right {
+        position: absolute;
+        top: -5px;             
+        right: -5px;           
+        background-color: #610303;
+        color: #ffffff;
+        font-size: 0.62rem;
+        font-weight: 800;
+        min-width: 17px;
+        height: 17px;
+        line-height: 17px;
+        border-radius: 9999px; 
+        text-align: center;
+        padding: 0 3px;
+        box-shadow: 0 0 0 2px #ffffff; /* Borde blanco que ayuda a recortar visualmente el ícono SVG */
+        pointer-events: none;
+        z-index: 10;
+}
+
+/* Estado activo cuando el producto se agrega al carrito */
+.tarjeta.en-carrito {
+    border-color: var(--color-borde-seleccion);
+    box-shadow: 0 0 14px rgba(22, 163, 74, 0.4);
+}
+
+.tarjeta.en-carrito .btn-carrito {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+}
+
+/* Brillo neón para los productos seleccionados en Modo Oscuro */
+body:has(#selector-modo:checked) .tarjeta.en-carrito {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+#contadorCarrito {
+    background-color: var(--color-borde-seleccion);
+    color: var(--color-fondo);
+    padding: 0.1rem 0.55rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    transition: var(--transicion-suave);
+}
+body:has(#selector-modo:checked) .carrito-header {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+#inputBusqueda {
+    width: 100%;
+    padding: 0.65rem 1rem 0.65rem 2.6rem;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta-fondo);
+    border: 2px solid var(--color-borde-seleccion);
+    border-radius: 50px;
+    box-shadow: 3px 3px 0px var(--color-sombra-verde);
+    outline: none;
+    transition: var(--transicion-suave);
+}
+
+#inputBusqueda::placeholder {
+    color: var(--color-placeholder-lineas);
+}
+
+/* Efecto al escribir en el buscador */
+#inputBusqueda:focus {
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Brillo neón para el buscador en Modo Oscuro */
+body:has(#selector-modo:checked) #inputBusqueda {
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+body:has(#selector-modo:checked) #inputBusqueda:focus {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+
+/* Mensaje de "No encontrado" (oculto por defecto) */
+.mensaje-vacio {
+    display: none;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta-fondo);
+    border: 2px dashed var(--color-borde-seleccion);
+    border-radius: 18px;
+    box-shadow: 4px 4px 0px var(--color-sombra-verde);
+}
+/* Estilos principales del Modal */
+.modal-carrito {
+    display: none; /* Se oculta por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro translúcido */
+    z-index: 9999; /* Asegura que quede por encima de todo el catálogo */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px); /* Efecto difuminado moderno */
+}
+
+/* Caja de contenido dentro del modal */
+.contenido-modal {
+    background-color: var(--bg-card, #ffffff);
+    color: var(--text-color, #1a1a1a);
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Encabezado del modal */
+.encabezado-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+}
+
+.btn-cerrar {
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Lista de elementos en el carrito */
+.items-carrito {
+    max-height: 260px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-carrito-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+}
+
+/* Asegurar que el botón del carrito sea cliqueable */
+.nav-btn-cart {
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+    width: auto !important;
+}
+
+.cart-icon-wrapper {
+    pointer-events: none; /* Evita que los spans internos bloqueen el evento click del button */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+/* Adaptación responsive */
+@media (max-width: 900px) {
+    .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .catalogo-grid {
+        grid-template-columns: 1fr;
+    }
+}
